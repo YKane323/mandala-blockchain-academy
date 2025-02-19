@@ -29,6 +29,7 @@ contract BuggyContract {
 
     // Bug 4
     function divideCount(uint divisor) public returns (uint) {
+        require(divisor  != 0 , "cant divide by 0 ");
         count = count / divisor;
         return count;
     }
@@ -44,11 +45,8 @@ contract BuggyContract {
     // Think about how to make the loop more efficient
     // and read the compiler
     function sumNumbers(uint n) public pure returns (uint) {
-        uint sum = 0 ;
-        for (uint i = 1 ; i <= n; i++) {
-            unchecked { sum += i; }
-        }
-        return sum;
+        
+        return ( n * (n+1) / 2 );
     }
 
     // Bug 7
